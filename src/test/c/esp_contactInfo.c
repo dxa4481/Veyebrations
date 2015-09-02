@@ -5,7 +5,7 @@
 #include <string.h>
 
 #include "../../../lib/cutest-1.5/CuTest.h"
-#include "../../esp8266/c/contactInfo.h"
+#include "../../../libraries/networking/esp8266/contactInfo.h"
 
 
 void LeastRecent_ZeroLen(CuTest* tc) {
