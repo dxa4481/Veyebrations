@@ -4,11 +4,32 @@
 
 /// Information about other devices
 /// 
-typedef struct {
-	/// The time when this object most recently obtained a key.
-	/// Units: Seconds since the epoch
+class ContactInfo
+{
+public:
+	
+	ContactInfo();
+	
+	ContactInfo(
+			const long mostRecentKeyOwnTime
+	);
+	
+	bool operator== (const ContactInfo& rhs) const;
+	 
 	long mostRecentKeyOwnTime;
-} contactInfo;
+	
+private:
+};
+
+
+
+#include <algorithm>    // std::min_element, std::max_element
+
+/// used by `determineWhoToSendKeyTo` and should only be used
+/// by `determineWhoToSendKeyTo`, but enfocing that is impossible
+/// as template implementations mut be in header files.
+bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b);
+
 
 /// Returns the member of the input array that has the least recent key-owning time.
 /// 
@@ -19,6 +40,9 @@ typedef struct {
 /// 
 /// @pre the array size is greater than zero
 /// @post the return value is non-null
-const contactInfo* const findLeastRecentTime(const size_t argc, const contactInfo* const argv);
+template <class ForwardIterator>
+ContactInfo determineWhoToSendKeyTo(const ForwardIterator begin, const ForwardIterator end) {
+	return *(std::min_element(begin, end, byLeastRecentlyOwnedKey));
+}
 
 #endif        //  #ifndef CONTACTINFO_H

@@ -1,18 +1,22 @@
+#include <vector>
+#include <algorithm>    // std::min_element, std::max_element
 #include "contactInfo.h"
 
-#define NULL (0)
+const long DEFAULT_KEY_OWN_TIME = 0;
 
-/// Returns the member of the input array that has the least recent key-owning time.
-const contactInfo* const findLeastRecentTime(const size_t argc, const contactInfo* const argv) {
-	int i;
-	const contactInfo* retVal = argv;
-	
-	if (argc <= 0) {return NULL;}
-	
-	for (i = 1; i < argc; i++) {
-		if (argv[i].mostRecentKeyOwnTime < retVal->mostRecentKeyOwnTime) {
-			retVal = argv + i;
-		}
-	}
-	return retVal;
+ContactInfo::ContactInfo() {
+	this->mostRecentKeyOwnTime = DEFAULT_KEY_OWN_TIME;
+}
+
+ContactInfo::ContactInfo(const long keyOwnTime) {
+	this->mostRecentKeyOwnTime = keyOwnTime;
+}
+
+bool ContactInfo::operator==(const ContactInfo& rhs) const {
+	return this->mostRecentKeyOwnTime == rhs.mostRecentKeyOwnTime;
+}
+
+
+bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b) {
+	return a.mostRecentKeyOwnTime < b.mostRecentKeyOwnTime;
 }
