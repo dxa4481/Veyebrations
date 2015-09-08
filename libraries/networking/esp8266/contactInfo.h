@@ -1,6 +1,8 @@
 #ifndef CONTACTINFO_H
 #define CONTACTINFO_H
 
+#include <string>
+
 
 /// Information about other devices
 /// 
@@ -11,14 +13,30 @@ public:
 	ContactInfo();
 	
 	ContactInfo(
-			const long mostRecentKeyOwnTime
+			const long keyTime,
+			const long pingTime
 	);
 	
-	bool operator== (const ContactInfo& rhs) const;
+	bool operator==(const ContactInfo& rhs) const;
 	 
-	long mostRecentKeyOwnTime;
+	const std::string getName() const;
+	
+	bool isStale() const;
+	void setPingTime(long i);
+	
+	long getKeyTime() const;
+	void setKeyTime(long i);
+	
 	
 private:
+	long mostRecentKeyOwnTime;
+	long mostRecentPingTime;
+	
+	/*
+	 * The damned thing explodes if a class containing a std:string member
+	 * is put anywhere near a malloc'd pointer.
+	 */
+//	std::string name;
 };
 
 

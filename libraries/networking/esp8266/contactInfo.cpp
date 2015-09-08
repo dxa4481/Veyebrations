@@ -2,21 +2,32 @@
 #include <algorithm>    // std::min_element, std::max_element
 #include "contactInfo.h"
 
-const long DEFAULT_KEY_OWN_TIME = 0;
+const long DEFAULT_TIME = 0;
 
-ContactInfo::ContactInfo() {
-	this->mostRecentKeyOwnTime = DEFAULT_KEY_OWN_TIME;
-}
+ContactInfo::ContactInfo() :
+	mostRecentKeyOwnTime(DEFAULT_TIME),
+	mostRecentPingTime(DEFAULT_TIME)
+{}
 
-ContactInfo::ContactInfo(const long keyOwnTime) {
-	this->mostRecentKeyOwnTime = keyOwnTime;
-}
+ContactInfo::ContactInfo(
+	const long keyOwnTime,
+	const long pingTime
+) :
+	mostRecentKeyOwnTime(keyOwnTime),
+	mostRecentPingTime(pingTime)
+{}
 
 bool ContactInfo::operator==(const ContactInfo& rhs) const {
-	return this->mostRecentKeyOwnTime == rhs.mostRecentKeyOwnTime;
+	return //(this->name == rhs.name) &&
+	       (this->mostRecentKeyOwnTime == rhs.mostRecentKeyOwnTime) &&
+	       (this->mostRecentPingTime == rhs.mostRecentPingTime);
 }
 
+//const std::string ContactInfo::getName() const { return this->name; }
+long ContactInfo::getKeyTime() const { return this->mostRecentKeyOwnTime; }
+void ContactInfo::setKeyTime(long i) { this->mostRecentKeyOwnTime = i; }
+void ContactInfo::setPingTime(long i) { this->mostRecentPingTime = i; }
 
 bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b) {
-	return a.mostRecentKeyOwnTime < b.mostRecentKeyOwnTime;
+	return a.getKeyTime() < b.getKeyTime();
 }
