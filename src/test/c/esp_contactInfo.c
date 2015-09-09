@@ -10,6 +10,50 @@
 #include "../../../libraries/networking/esp8266/ContactInfoFilters.h"
 
 
+void getKeyTime_constructor(CuTest* tc) {
+	const ContactInfo res(123, 456);
+	CuAssertTrue(tc, 123 == res.getKeyTime());
+}
+
+void getKeyTime_setter(CuTest* tc) {
+	ContactInfo res;
+	res.setKeyTime(456);
+	CuAssertTrue(tc, 456 == res.getKeyTime());
+}
+
+void isStale_constructor_1(CuTest* tc) {
+	const ContactInfo res(123, 456);
+	CuAssertTrue(tc, !res.isStale(0));
+}
+
+void isStale_constructor_2(CuTest* tc) {
+	const ContactInfo res(123, 456);
+	CuAssertTrue(tc, !res.isStale(100456));
+}
+
+void isStale_constructor_3(CuTest* tc) {
+	const ContactInfo res(123, 456);
+	CuAssertTrue(tc, res.isStale(100457));
+}
+
+void isStale_constructor_4(CuTest* tc) {
+	const ContactInfo res(123, 456);
+	CuAssertTrue(tc, res.isStale(300000));
+}
+
+void isStale_setter_2(CuTest* tc) {
+	ContactInfo res;
+	res.setPingTime(456);
+	CuAssertTrue(tc, !res.isStale(100456));
+}
+
+void isStale_setter_3(CuTest* tc) {
+	ContactInfo res;
+	res.setPingTime(456);
+	CuAssertTrue(tc, res.isStale(100457));
+}
+
+
 void LeastRecent_ZeroLen(CuTest* tc) {
 	const std::vector<ContactInfo> val;
 	
@@ -88,6 +132,16 @@ void LeastRecent_TenLen_5(CuTest* tc) {
 CuSuite* ContactInfoSuite(void)
 {
 	CuSuite* suite = CuSuiteNew();
+	
+	SUITE_ADD_TEST(suite, getKeyTime_constructor);
+	SUITE_ADD_TEST(suite, getKeyTime_setter);
+	
+	SUITE_ADD_TEST(suite, isStale_constructor_1);
+	SUITE_ADD_TEST(suite, isStale_constructor_2);
+	SUITE_ADD_TEST(suite, isStale_constructor_3);
+	SUITE_ADD_TEST(suite, isStale_constructor_4);
+	SUITE_ADD_TEST(suite, isStale_setter_2);
+	SUITE_ADD_TEST(suite, isStale_setter_3);
 	
 //	SUITE_ADD_TEST(suite, LeastRecent_ZeroLen);
 	SUITE_ADD_TEST(suite, LeastRecent_OneLen);
