@@ -1,23 +1,23 @@
-#ifndef CONTACTINFO_H
-#define CONTACTINFO_H
+#ifndef CONTACT_H
+#define CONTACT_H
 
 #include <string>
 
 
 /// Information about other devices
 /// 
-class ContactInfo
+class Contact
 {
 public:
 	
-	ContactInfo();
+	Contact();
 	
-	ContactInfo(
+	Contact(
 			const long keyTime,
 			const long pingTime
 	);
 	
-	bool operator==(const ContactInfo& rhs) const;
+	bool operator==(const Contact& rhs) const;
 	
 	/// returns the node's name
 	const std::string getName() const;
@@ -45,4 +45,4 @@ private:
 };
 
 
-#endif        //  #ifndef CONTACTINFO_H
+#endif        //  #ifndef Contact_H

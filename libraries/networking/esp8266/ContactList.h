@@ -1,13 +1,13 @@
-#ifndef CONTACTINFOFILTERS_H
-#define CONTACTINFOFILTERS_H
+#ifndef CONTACTLIST_H
+#define CONTACTLIST_H
 
-#include "contactInfo.h"
+#include "Contact.h"
 #include <algorithm>    // std::min_element, std::max_element
 
 /// used by `determineWhoToSendKeyTo` and should only be used
 /// by `determineWhoToSendKeyTo`, but enfocing that is impossible
 /// as template implementations mut be in header files.
-bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b);
+bool byLeastRecentlyOwnedKey(const Contact a, const Contact b);
 
 
 /// Returns the member of the input array that has the least recent key-owning time.
@@ -20,7 +20,7 @@ bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b);
 /// @pre the array size is greater than zero
 /// @post the return value is non-null
 template <class ForwardIterator>
-ContactInfo determineWhoToSendKeyTo(const ForwardIterator begin, const ForwardIterator end) {
+Contact determineWhoToSendKeyTo(const ForwardIterator begin, const ForwardIterator end) {
 	return *(std::min_element(begin, end, byLeastRecentlyOwnedKey));
 }
 

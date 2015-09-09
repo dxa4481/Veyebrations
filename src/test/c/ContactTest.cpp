@@ -6,69 +6,69 @@
 #include <vector>
 
 #include "../../../lib/cutest-1.5/CuTest.h"
-#include "../../../libraries/networking/esp8266/contactInfo.h"
-#include "../../../libraries/networking/esp8266/ContactInfoFilters.h"
+#include "../../../libraries/networking/esp8266/Contact.h"
+#include "../../../libraries/networking/esp8266/ContactList.h"
 
 
 void getKeyTime_constructor(CuTest* tc) {
-	const ContactInfo res(123, 456);
+	const Contact res(123, 456);
 	CuAssertTrue(tc, 123 == res.getKeyTime());
 }
 
 void getKeyTime_setter(CuTest* tc) {
-	ContactInfo res;
+	Contact res;
 	res.setKeyTime(456);
 	CuAssertTrue(tc, 456 == res.getKeyTime());
 }
 
 void isStale_constructor_1(CuTest* tc) {
-	const ContactInfo res(123, 456);
+	const Contact res(123, 456);
 	CuAssertTrue(tc, !res.isStale(0));
 }
 
 void isStale_constructor_2(CuTest* tc) {
-	const ContactInfo res(123, 456);
+	const Contact res(123, 456);
 	CuAssertTrue(tc, !res.isStale(100456));
 }
 
 void isStale_constructor_3(CuTest* tc) {
-	const ContactInfo res(123, 456);
+	const Contact res(123, 456);
 	CuAssertTrue(tc, res.isStale(100457));
 }
 
 void isStale_constructor_4(CuTest* tc) {
-	const ContactInfo res(123, 456);
+	const Contact res(123, 456);
 	CuAssertTrue(tc, res.isStale(300000));
 }
 
 void isStale_setter_2(CuTest* tc) {
-	ContactInfo res;
+	Contact res;
 	res.setPingTime(456);
 	CuAssertTrue(tc, !res.isStale(100456));
 }
 
 void isStale_setter_3(CuTest* tc) {
-	ContactInfo res;
+	Contact res;
 	res.setPingTime(456);
 	CuAssertTrue(tc, res.isStale(100457));
 }
 
 
 void LeastRecent_ZeroLen(CuTest* tc) {
-	const std::vector<ContactInfo> val;
+	const std::vector<Contact> val;
 	
 	CuAssertTrue(tc, NULL == &determineWhoToSendKeyTo(val.begin(), val.end()));
 }
 
 void LeastRecent_OneLen(CuTest* tc) {
-	const ContactInfo value(654321, 0);
-	const ContactInfo* const argv = &value;
+	const Contact value(654321, 0);
+	const Contact* const argv = &value;
 	
 	CuAssertTrue(tc, value == determineWhoToSendKeyTo(argv, argv + 1));
 }
 
 void LeastRecent_OneLen_2(CuTest* tc) {
-	ContactInfo argv[10];
+	Contact argv[10];
 	argv[0].setKeyTime(654321);
 	argv[1].setKeyTime(0);
 	argv[2].setKeyTime(0);
@@ -78,7 +78,7 @@ void LeastRecent_OneLen_2(CuTest* tc) {
 }
 
 void LeastRecent_OneLen_heap(CuTest* tc) {
-	ContactInfo* const argv((ContactInfo*) malloc(1 * sizeof(ContactInfo)));
+	Contact* const argv((Contact*) malloc(1 * sizeof(Contact)));
 	argv[0].setKeyTime(654321);
 	
 	CuAssertTrue(tc, argv[0] == determineWhoToSendKeyTo(argv, argv + 1));
@@ -88,22 +88,22 @@ void LeastRecent_OneLen_heap(CuTest* tc) {
 
 
 void LeastRecent_OneLen_vector(CuTest* tc) {
-	std::vector<ContactInfo> argv;
-	argv.push_back( ContactInfo(654321, 0) );
+	std::vector<Contact> argv;
+	argv.push_back( Contact(654321, 0) );
 	
 	CuAssertTrue(tc, argv[0] == determineWhoToSendKeyTo(argv.begin(), argv.end()));
 }
 
 void LeastRecent_TwoLen_0(CuTest* tc) {
-	std::vector<ContactInfo> argv;
-	argv.push_back( ContactInfo(654321, 0) );
-	argv.push_back( ContactInfo(12345, 2) );
+	std::vector<Contact> argv;
+	argv.push_back( Contact(654321, 0) );
+	argv.push_back( Contact(12345, 2) );
 	
 	CuAssertTrue(tc, argv[1] == determineWhoToSendKeyTo(argv.begin(), argv.end()));
 }
 
 void LeastRecent_TwoLen_1(CuTest* tc) {
-	ContactInfo* const argv = (ContactInfo*) malloc(2 * sizeof(ContactInfo));
+	Contact* const argv = (Contact*) malloc(2 * sizeof(Contact));
 	argv[0].setKeyTime(12345);
 	argv[1].setKeyTime(654321);
 	
@@ -114,7 +114,7 @@ void LeastRecent_TwoLen_1(CuTest* tc) {
 
 void LeastRecent_TenLen_5(CuTest* tc) {
 	int i;
-	ContactInfo* const argv = (ContactInfo*) malloc(10 * sizeof(ContactInfo));
+	Contact* const argv = (Contact*) malloc(10 * sizeof(Contact));
 	for (i = 0; i < 10; i++) {
 		argv[i].setKeyTime(100000 - i);
 	}
@@ -129,7 +129,7 @@ void LeastRecent_TenLen_5(CuTest* tc) {
 
 
 
-CuSuite* ContactInfoSuite(void)
+CuSuite* ContactSuite(void)
 {
 	CuSuite* suite = CuSuiteNew();
 	

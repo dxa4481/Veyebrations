@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include "../../../lib/cutest-1.5/CuTest.h"
 
-CuSuite* ContactInfoSuite();
+CuSuite* ContactSuite();
 
 int main(void) {
 	CuString *output = CuStringNew();
 	CuSuite* suite = CuSuiteNew();
 
-	CuSuiteAddSuite(suite, ContactInfoSuite());
+	CuSuiteAddSuite(suite, ContactSuite());
 
 	CuSuiteRun(suite);
 	CuSuiteSummary(suite, output);

@@ -11,8 +11,8 @@ cd objects
     -I"C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/include" ^
     -I"C:/Program Files/Microsoft SDKs/Windows/v7.1/Include" ^
     "../../../lib/cutest-1.5/CuTest.c" ^
-    "../../../libraries/networking/esp8266/contactInfo.cpp" ^
-    "../../../src/test/c/esp_contactInfo.c" ^
+    "../../../libraries/networking/esp8266/Contact.cpp" ^
+    "../../../src/test/c/ContactTest.cpp" ^
     "../../../src/test/c/AllTests.c" ^
     /TP /O1 /EHsc /MT /link -subsystem:console ^
     "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib/amd64/comsupp.lib" ^

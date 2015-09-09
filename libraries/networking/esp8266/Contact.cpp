@@ -1,5 +1,5 @@
 #include <vector>
-#include "contactInfo.h"
+#include "Contact.h"
 
 /// value given to times if not explicitly stated in constructor
 const long DEFAULT_TIME = 0;
@@ -7,12 +7,12 @@ const long DEFAULT_TIME = 0;
 /// is 'stale' - to be treated as if it is out of range or no longer extant.
 const long STALE_TIME_DELTA = 100000; //TODO: figure out a real number to put here
 
-ContactInfo::ContactInfo() :
+Contact::Contact() :
 	mostRecentKeyOwnTime(DEFAULT_TIME),
 	mostRecentPingTime(DEFAULT_TIME)
 {}
 
-ContactInfo::ContactInfo(
+Contact::Contact(
 	const long keyOwnTime,
 	const long pingTime
 ) :
@@ -20,21 +20,21 @@ ContactInfo::ContactInfo(
 	mostRecentPingTime(pingTime)
 {}
 
-bool ContactInfo::operator==(const ContactInfo& rhs) const {
+bool Contact::operator==(const Contact& rhs) const {
 	return //(this->name == rhs.name) &&
 	       (this->mostRecentKeyOwnTime == rhs.mostRecentKeyOwnTime) &&
 	       (this->mostRecentPingTime == rhs.mostRecentPingTime);
 }
 
-//const std::string ContactInfo::getName() const { return this->name; }
-long ContactInfo::getKeyTime() const { return this->mostRecentKeyOwnTime; }
-void ContactInfo::setKeyTime(long i) { this->mostRecentKeyOwnTime = i; }
-void ContactInfo::setPingTime(long i) { this->mostRecentPingTime = i; }
+//const std::string Contact::getName() const { return this->name; }
+long Contact::getKeyTime() const { return this->mostRecentKeyOwnTime; }
+void Contact::setKeyTime(long i) { this->mostRecentKeyOwnTime = i; }
+void Contact::setPingTime(long i) { this->mostRecentPingTime = i; }
 
-bool ContactInfo::isStale(long currentTime) const {
+bool Contact::isStale(long currentTime) const {
 	return this->mostRecentPingTime + STALE_TIME_DELTA < currentTime;
 }
 
-bool byLeastRecentlyOwnedKey(const ContactInfo a, const ContactInfo b) {
+bool byLeastRecentlyOwnedKey(const Contact a, const Contact b) {
 	return a.getKeyTime() < b.getKeyTime();
 }
