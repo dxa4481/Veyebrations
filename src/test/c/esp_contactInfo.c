@@ -7,6 +7,7 @@
 
 #include "../../../lib/cutest-1.5/CuTest.h"
 #include "../../../libraries/networking/esp8266/contactInfo.h"
+#include "../../../libraries/networking/esp8266/ContactInfoFilters.h"
 
 
 void LeastRecent_ZeroLen(CuTest* tc) {
@@ -33,8 +34,6 @@ void LeastRecent_OneLen_2(CuTest* tc) {
 }
 
 void LeastRecent_OneLen_heap(CuTest* tc) {
-	printf("%i\n", sizeof(ContactInfo));
-	
 	ContactInfo* const argv((ContactInfo*) malloc(1 * sizeof(ContactInfo)));
 	argv[0].setKeyTime(654321);
 	

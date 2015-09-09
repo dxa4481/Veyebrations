@@ -1,5 +1,4 @@
 #include <vector>
-#include <algorithm>    // std::min_element, std::max_element
 #include "contactInfo.h"
 
 const long DEFAULT_TIME = 0;
