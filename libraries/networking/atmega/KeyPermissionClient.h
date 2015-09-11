@@ -6,9 +6,8 @@
 typedef void (*callback)();
 
 /// The hardware interface is two pins.
-/// 1. is an input pin, preferably with interrupt capabilities.
-///    This pin will pulse for XXX microseconds when the reciever
-///    is allowed 
+/// 1. is an input pin that will be high when this has a key, and is
+///    allowed to do whatever the key gives permission for
 /// 2. is an output pin that will pulse when the client is done with
 ///    its key
 
@@ -16,17 +15,22 @@ class KeyPermissionClient
 {
 public:
 	
+	/// Connect to KeyPermissions using the specified pins
 	KeyPermissionClient(
 			const uint8_t inputPin,
-			const uint8_t outputPin,
-			const uint8_t inputInterrupt,
-			const callback interruptServiceRequest
+			const uint8_t outputPin
 	);
 	
+	/// polls to determine whether this currently has a key
+	bool hasKey();
+	
+	/// Tell server to give key to someone else
+	void indicateDone();
 	
 	
 private:
-	const callback isr;
+	const uint8_t inputPin;
+	const uint8_t outputPin;
 };
 
 #endif // KEYPERMISSIONS_H
