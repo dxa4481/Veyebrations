@@ -10,6 +10,10 @@ cd objects
 "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/bin/amd64/cl" ^
     -I"C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/include" ^
     -I"C:/Program Files/Microsoft SDKs/Windows/v7.1/Include" ^
+    -I"../../../../" ^
+    -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" ^
+    -I"C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.8.1\include" ^
+    -I"C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include" ^
     "../../../lib/cutest-1.5/CuTest.c" ^
     "../../../libraries/networking/atmega/KeyPermissionClient.cpp" ^
     "../../../src/test/c/KeyPermissionClientTest.cpp" ^

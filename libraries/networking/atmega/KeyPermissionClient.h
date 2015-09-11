@@ -1,7 +1,9 @@
 #ifndef KEYPERMISSIONS_H
 #define KEYPERMISSIONS_H
 
-typedef void (*callback)()
+#include <Arduino.h>
+
+typedef void (*callback)();
 
 /// The hardware interface is two pins.
 /// 1. is an input pin, preferably with interrupt capabilities.
@@ -10,14 +12,14 @@ typedef void (*callback)()
 /// 2. is an output pin that will pulse when the client is done with
 ///    its key
 
-final class KeyPermissionClient
+class KeyPermissionClient
 {
 public:
 	
 	KeyPermissionClient(
-			const byte inputPin,
-			const byte outputPin,
-			const byte inputInterrupt,
+			const uint8_t inputPin,
+			const uint8_t outputPin,
+			const uint8_t inputInterrupt,
 			const callback interruptServiceRequest
 	);
 	
