@@ -16,7 +16,7 @@ void KeyPermissionClient::indicateDone() {
 	// raise done signal
 	digitalWrite(outputPin, HIGH);
 	// wait until server acknoledges done signal
-	while (this->hasKey()) { delay(1); }
+	while (this->hasKey()) { yield(); delay(1); }
 	// lower done signal
 	digitalWrite(outputPin, LOW);
 }

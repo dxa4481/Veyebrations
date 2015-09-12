@@ -16,15 +16,18 @@ class KeyPermissionClient
 public:
 	
 	/// Connect to KeyPermissions using the specified pins
+	/// Side-effecting
 	KeyPermissionClient(
 			const uint8_t inputPin,
 			const uint8_t outputPin
 	);
 	
 	/// polls to determine whether this currently has a key
+	/// Side-effecting
 	bool hasKey();
 	
 	/// Tell server to give key to someone else
+	/// Side-effecting
 	void indicateDone();
 	
 	
