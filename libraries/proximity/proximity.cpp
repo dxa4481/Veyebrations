@@ -1,5 +1,5 @@
 #include <temperature.h>
-
+#include <proximity.h>
 
 Proximity::Proximity(int32_t echoPin, int32_t trigPin){
   this->echoPin = echoPin;
@@ -11,7 +11,7 @@ Proximity::Proximity(int32_t echoPin, int32_t trigPin){
 
 double Proximity::getProximity(){
   // put your main code here, to run repeatedly:
- double speed;
+ double speed, duration, distance;
  digitalWrite(trigPin, LOW); 
  delayMicroseconds(2); 
 
@@ -23,7 +23,7 @@ double Proximity::getProximity(){
  
  //Calculate the distance (in m) based on the speed of sound.
  speed = 331 + 0.6 * temp.getTemp();
- distance = duration * speed / 2;
+ distance = duration/10000 * speed / 2;
 
  return distance; 
 }
