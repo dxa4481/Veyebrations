@@ -28,7 +28,7 @@ public:
 	void setSpeed( byte speed );
 	
 	// Set the duty cycle to the percentage[0, 100]
-	void setDutyCycle( byte percentage );
+	void setDutyCycle( uint16_t percentage );
 	
 private:
 	// The analog pin that the physical motor is attached to

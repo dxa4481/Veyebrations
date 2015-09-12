@@ -3,8 +3,8 @@
  * Test sketch to test the motor library created
  */
 
-Motor motor(11);
-int testDuty;
+Motor motor(5);
+uint16_t testDuty;
 
 void setup() 
 {
@@ -25,6 +25,7 @@ void updateDutyCycle()
 {
   testDuty += 25;
   testDuty = testDuty % 125;
+
   motor.setDutyCycle( testDuty );
 
   Serial.print("Duty Cycle: ");
