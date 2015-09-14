@@ -5,9 +5,9 @@
 #include <string.h>
 #include <vector>
 
-#include "../../../lib/cutest-1.5/CuTest.h"
-#include "../../../libraries/networking/esp8266/Contact.h"
-#include "../../../libraries/networking/esp8266/ContactList.h"
+#include <cutest-1.5/CuTest.h> /** http://cutest.sourceforge.net/ */
+#include "../Contact.h"
+#include "../ContactList.h"
 
 
 void getKeyTime_constructor(CuTest* tc) {
