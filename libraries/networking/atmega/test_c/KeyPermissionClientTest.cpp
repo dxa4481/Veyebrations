@@ -6,8 +6,8 @@
 #include <vector>
 #include <Arduino.h>
 
-#include "../../../lib/cutest-1.5/CuTest.h"
-#include "../../../libraries/networking/atmega/KeyPermissionClient.h"
+#include <cutest-1.5/CuTest.h> /** http://cutest.sourceforge.net/ */
+#include "../KeyPermissionClient.h"
 
 /***** Mocks ******/
 
@@ -22,6 +22,7 @@ void digitalWrite(uint8_t index, uint8_t value) {
 int digitalRead(uint8_t index) {
 	return currentPinValues[index];
 }
+void yield() {}
 
 /****** setUp / tearDown ******/
 

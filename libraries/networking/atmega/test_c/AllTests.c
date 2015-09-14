@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../../lib/cutest-1.5/CuTest.h"
+#include <cutest-1.5/CuTest.h> /** http://cutest.sourceforge.net/ */
 
 CuSuite* KeyPermissionClientSuite();
 
