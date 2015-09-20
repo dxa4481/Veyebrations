@@ -1,7 +1,7 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
-#include <string>
+#include <IPAddress.h>
 
 
 /// Information about other devices
@@ -13,6 +13,7 @@ public:
 	Contact();
 	
 	Contact(
+			const IPAddress ip,
 			const long keyTime,
 			const long pingTime
 	);
@@ -20,7 +21,7 @@ public:
 	bool operator==(const Contact& rhs) const;
 	
 	/// returns the node's name
-	const std::string getName() const;
+	const IPAddress getIp() const;
 	
 	/// determines whether 
 	bool isStale(long currentTime) const;
@@ -33,15 +34,12 @@ public:
 	void setKeyTime(long i);
 	
 	
+	void sendKey();
+	
 private:
+	const IPAddress ip;
 	long mostRecentKeyOwnTime;
 	long mostRecentPingTime;
-	
-	/*
-	 * The damned thing explodes if a class containing a std:string member
-	 * is put anywhere near a malloc'd pointer.
-	 */
-//	std::string name;
 };
 
 

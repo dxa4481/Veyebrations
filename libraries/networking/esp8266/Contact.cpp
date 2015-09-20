@@ -1,4 +1,3 @@
-#include <vector>
 #include "Contact.h"
 
 /// value given to times if not explicitly stated in constructor
@@ -13,9 +12,11 @@ Contact::Contact() :
 {}
 
 Contact::Contact(
+	const IPAddress ip,
 	const long keyOwnTime,
 	const long pingTime
 ) :
+	ip(ip),
 	mostRecentKeyOwnTime(keyOwnTime),
 	mostRecentPingTime(pingTime)
 {}
@@ -35,6 +36,6 @@ bool Contact::isStale(long currentTime) const {
 	return this->mostRecentPingTime + STALE_TIME_DELTA < currentTime;
 }
 
-bool byLeastRecentlyOwnedKey(const Contact a, const Contact b) {
-	return a.getKeyTime() < b.getKeyTime();
+void Contact::sendKey() {
+	
 }

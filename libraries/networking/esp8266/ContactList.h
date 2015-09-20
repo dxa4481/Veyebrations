@@ -10,6 +10,7 @@
 bool byLeastRecentlyOwnedKey(const Contact a, const Contact b);
 
 
+
 /// Returns the member of the input array that has the least recent key-owning time.
 /// 
 /// functional
@@ -23,6 +24,7 @@ template <class ForwardIterator>
 Contact determineWhoToSendKeyTo(const ForwardIterator begin, const ForwardIterator end) {
 	return *(std::min_element(begin, end, byLeastRecentlyOwnedKey));
 }
+
 
 
 
