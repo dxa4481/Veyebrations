@@ -25,7 +25,7 @@ private:
 	uint8_t inputPin;
 	uint8_t outputPin;
 	WiFiServer server;
-	bool hasKey;
-}
+	bool _hasKey;
+};
 
 #endif        //  #ifndef KEYSERVER_H

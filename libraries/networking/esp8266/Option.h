@@ -11,8 +11,8 @@ public:
 	// I'm sure the C++ way to do this is operator*
 	
 private:
-	const bool isNone;
+	const bool _isNone;
 	const String value;
-}
+};
 
 #endif        //  #ifndef OPTION_H

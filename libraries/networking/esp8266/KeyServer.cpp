@@ -10,7 +10,7 @@ KeyServer::KeyServer(
 		inputPin(inputPin),
 		outputPin(outputPin),
 		server(KEY_SERVER_PORT),
-		hasKey(false)
+		_hasKey(false)
 {
 	pinMode(inputPin, INPUT);
 	pinMode(outputPin, OUTPUT);
@@ -34,12 +34,13 @@ void KeyServer::handle() {
 	}
 }
 
-void hasKey() {return this->hasKey;}
+void hasKey() {return this->_hasKey;}
 
 void canReturnKey() {return (HIGH == digitalRead(inputPin));}
 
 void returnKey() {
 	digitalWrite(outputPin, LOW);
+	this->_hasKey = false;
 	
 	WiFiClient client(
 		WiFi.softAPIP(),

@@ -12,12 +12,12 @@ const char* const password("the rain is gone");
 const int ACCESS_POINT_PORT(27669);
 const int MAX_CLIENTS(6);
 
-enum veyeb_protocol_messages {
-	VEYEB_OK = 0;
-	VEYEB_ERR = 1;
+enum veyeb_protocol_messages : int {
+	VEYEB_OK = 0,
+	VEYEB_ERR = 1,
 	
-	VEYEB_SEND_KEY = 64;
-	VEYEB_PING = 65;
+	VEYEB_SEND_KEY = 64,
+	VEYEB_PING = 65
 };
 
 
@@ -38,8 +38,8 @@ public:
 private:
 	WiFiServer server;
 	int clientc;
-	Contact[MAX_CLIENTS] clientv;
-}
+	Contact clientv[MAX_CLIENTS];
+};
 
 
 

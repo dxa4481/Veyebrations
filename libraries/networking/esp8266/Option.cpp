@@ -1,5 +1,5 @@
 
-StringOption::StringOption() : isNone(true) {}
-StringOption::StringOption(String s) : isNone(false), value(s) {}
-StringOption::isNone() {return this->isNone;}
-StringOption::getValue() {return this->value;}
+StringOption::StringOption() : _isNone(true) {}
+StringOption::StringOption(String s) : _isNone(false), value(s) {}
+const StringOption::isNone() {return this->_isNone;}
+const StringOption::getValue() {return this->value;}
