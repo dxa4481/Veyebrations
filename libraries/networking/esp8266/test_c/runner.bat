@@ -11,6 +11,8 @@ REM create the runner
     "../../../../../../cutest-1.5/CuTest.c" ^
     "../../Contact.cpp" ^
     "../ContactTest.cpp" ^
+    "../../Option.cpp" ^
+    "../OptionTest.cpp" ^
     "../AllTests.c" ^
     /TP /O1 /EHsc /MT /link -subsystem:console ^
     "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/lib/amd64/comsupp.lib" ^

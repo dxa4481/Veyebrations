@@ -1,4 +1,5 @@
 target/
+*~
 
 # Object files
 *.o

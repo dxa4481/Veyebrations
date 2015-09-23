@@ -8,6 +8,7 @@ int main(void) {
 	CuSuite* suite = CuSuiteNew();
 
 	CuSuiteAddSuite(suite, ContactSuite());
+	CuSuiteAddSuite(suite, OptionSuite());
 
 	CuSuiteRun(suite);
 	CuSuiteSummary(suite, output);
