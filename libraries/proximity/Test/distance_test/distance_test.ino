@@ -1,6 +1,6 @@
 #include <proximity.h>
 
-Proximity proximity(3, 4);
+Proximity proximity(3, 4, 0);
 
 void setup() {
   // put your setup code here, to run once:

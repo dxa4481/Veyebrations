@@ -1,10 +1,11 @@
 #include <temperature.h>
 #include <proximity.h>
 
-Proximity::Proximity(int32_t echoPin, int32_t trigPin){
+Proximity::Proximity(int32_t echoPin, int32_t trigPin, int8_t tempPin) :
+  temp(tempPin)
+{
   this->echoPin = echoPin;
   this->trigPin = trigPin;
-  this->temp = Temperature();
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
