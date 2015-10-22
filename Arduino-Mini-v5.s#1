@@ -18678,10 +18678,11 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <label x="345.44" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="375.92" y1="43.18" x2="375.92" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="375.92" y1="40.64" x2="375.92" y2="53.34" width="0.1524" layer="91"/>
 <label x="375.92" y="63.5" size="1.778" layer="95"/>
 <wire x1="358.14" y1="53.34" x2="375.92" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="MOTOR+" gate="G$1" pin="TP"/>
+<pinref part="D3" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$4" class="0">

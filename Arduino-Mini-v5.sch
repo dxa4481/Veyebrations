@@ -18458,8 +18458,9 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 </segment>
 <segment>
 <pinref part="U$12" gate="G$1" pin="P$1"/>
-<wire x1="342.9" y1="33.02" x2="342.9" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="342.9" y1="33.02" x2="342.9" y2="25.4" width="0.1524" layer="91"/>
 <label x="345.44" y="27.94" size="1.778" layer="95"/>
+<pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="IO7" class="0">
