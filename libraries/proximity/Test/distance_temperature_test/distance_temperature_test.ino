@@ -1,8 +1,8 @@
 #include <proximity.h>
 #include <temperature.h>
 
-Proximity proximity(3, 4);
-Temperature temperature;
+Proximity proximity(3, 4, 0);
+Temperature temperature(0);
 
 void setup() {
   // put your setup code here, to run once:
